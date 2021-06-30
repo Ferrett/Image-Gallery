@@ -39,11 +39,7 @@ namespace Image_Gallery
             // 
             // rightButton
             // 
-
-           
-
-
-            this.rightButton.BackColor = System.Drawing.Color.Black; 
+            this.rightButton.BackColor = System.Drawing.Color.Black;
             this.rightButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 30F);
             this.rightButton.ForeColor = System.Drawing.Color.White;
             this.rightButton.Location = new System.Drawing.Point(736, 25);
@@ -65,50 +61,51 @@ namespace Image_Gallery
             this.leftButton.Text = "🡸";
             this.leftButton.UseVisualStyleBackColor = false;
             // 
-            // panel1
+            // imgPanel
             // 
             this.imgPanel.BackColor = System.Drawing.Color.Black;
+            this.imgPanel.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.imgPanel.Location = new System.Drawing.Point(84, 25);
-            this.imgPanel.Name = "panel1";
+            this.imgPanel.Name = "imgPanel";
             this.imgPanel.Size = new System.Drawing.Size(633, 339);
             this.imgPanel.TabIndex = 2;
-            this.imgPanel.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-
-
-            this.outlinePanel.BackColor = System.Drawing.Color.Red;
-            this.outlinePanel.Name = "outlinePanel";
-            this.outlinePanel.TabIndex = 2;
-
             // 
-            // panel2
+            // progressPanel
             // 
             this.progressPanel.BackColor = System.Drawing.Color.Black;
+            this.progressPanel.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.progressPanel.Location = new System.Drawing.Point(84, 371);
-            this.progressPanel.Name = "panel";
+            this.progressPanel.Name = "progressPanel";
             this.progressPanel.Size = new System.Drawing.Size(633, 10);
             this.progressPanel.TabIndex = 3;
-            this.progressPanel.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-
+            // 
+            // progressPanel2
+            // 
             this.progressPanel2.BackColor = System.Drawing.Color.LightGreen;
             this.progressPanel2.Location = new System.Drawing.Point(86, 373);
-            this.progressPanel2.Name = "panel2";
-            //this.progressPanel2.Size = new System.Drawing.Size(333, 6);
+            this.progressPanel2.Name = "progressPanel2";
             this.progressPanel2.Size = new System.Drawing.Size(0, 6);
             this.progressPanel2.TabIndex = 3;
-            
+            // 
+            // outlinePanel
+            // 
+            this.outlinePanel.BackColor = System.Drawing.Color.Red;
+            this.outlinePanel.Location = new System.Drawing.Point(0, 0);
+            this.outlinePanel.Name = "outlinePanel";
+            this.outlinePanel.Size = new System.Drawing.Size(200, 100);
+            this.outlinePanel.TabIndex = 2;
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.ClientSize = new System.Drawing.Size(800, 466);
+            this.ClientSize = new System.Drawing.Size(800, 474);
             this.Controls.Add(this.progressPanel2);
             this.Controls.Add(this.progressPanel);
             this.Controls.Add(this.imgPanel);
             this.Controls.Add(this.leftButton);
             this.Controls.Add(this.rightButton);
-            
             this.Name = "Form1";
             this.Text = "Gallery";
             this.ResumeLayout(false);

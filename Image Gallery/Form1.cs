@@ -14,29 +14,37 @@ namespace Image_Gallery
     public partial class Form1 : Form
     {
         private List<Panel> previewImg = new List<Panel>();
+        private List<Image> images = new List<Image>();
         private List<string> imagePath = new List<string>();
+
+        private const int previewImagesOnScreen = 8;
         private int previewImageID = 0;
         private int mainImageId = 0;
-        private List<Image> images = new List<Image>();
-        private const int previewImagesOnScreen = 8;
-        Timer timer = new Timer();
-        int showImageProgress=0;
-        public Form1()
+        private int showImageProgress=0;
+        private bool closeTheForm = false;
+        private string directoryPath;
+        private Timer timer = new Timer();
+        public Form1(string path)
         {
             InitializeComponent();
+            directoryPath = path;
 
             rightButton.Click += RightButton_Click;
             leftButton.Click += LeftButton_Click;
 
-
             GetImagesFromFile();
-            CreatePreviewImg();
-            SetMainImage();
-            LoadImages();
+            if (closeTheForm == false)
+            {
+                CreatePreviewImg();
+                SetMainImage();
+                LoadImages();
 
-            timer.Interval = 20;
-            timer.Tick += Timer_Tick;
-            timer.Start();
+                timer.Interval = 20;
+                timer.Tick += Timer_Tick;
+                timer.Start();
+            }
+            else
+                this.Close();
         }
 
         private void Timer_Tick(object sender, EventArgs e)
@@ -63,19 +71,19 @@ namespace Image_Gallery
             showImageProgress = 0;
             previewImageID--;
 
-            int a = previewImageID % imagePath.Count;
+            int currentId = previewImageID % imagePath.Count;
             foreach (var item in previewImg)
             {
-                if (a >= 0)
+                if (currentId >= 0)
                 {
-                    if (a == imagePath.Count)
-                        a = 0;
-                    item.BackgroundImage = images[a];
+                    if (currentId == imagePath.Count)
+                        currentId = 0;
+                    item.BackgroundImage = images[currentId];
                 }
                 else
-                    item.BackgroundImage = images[imagePath.Count + a];
+                    item.BackgroundImage = images[imagePath.Count + currentId];
 
-                a++;
+                currentId++;
             }
             SetMainImage();
         }
@@ -85,38 +93,50 @@ namespace Image_Gallery
             showImageProgress = 0;
             previewImageID++;
 
-            int a = previewImageID % imagePath.Count;
+            int currentId = previewImageID % imagePath.Count;
             foreach (var item in previewImg)
             {
-                if (a < imagePath.Count)
+                if (currentId < imagePath.Count)
                 {
-                    if (a < 0)
-                        item.BackgroundImage = images[imagePath.Count + a];
+                    if (currentId < 0)
+                        item.BackgroundImage = images[imagePath.Count + currentId];
                     else
-                        item.BackgroundImage = images[a];
+                        item.BackgroundImage = images[currentId];
                 }
                 else
-                    item.BackgroundImage = images[a - imagePath.Count];
+                    item.BackgroundImage = images[currentId - imagePath.Count];
 
-                a++;
+                currentId++;
             }
             SetMainImage();
         }
 
         private void SetMainImage()
         {
-
             imgPanel.BackgroundImage = previewImg[mainImageId].BackgroundImage;
-
         }
 
         private void GetImagesFromFile()
         {
-            string rootdir = @"C:\Users\User\source\repos\Image Gallery\Image Gallery\bin\Debug\Images";
+            //string rootdir = @"C:\Users\User\source\repos\Image Gallery\Image Gallery\bin\Debug\Images";
 
-
-            imagePath.AddRange(Directory.GetFiles(rootdir, "*png", SearchOption.AllDirectories).ToList());
-            imagePath.AddRange(Directory.GetFiles(rootdir, "*jpg", SearchOption.AllDirectories).ToList());
+            try
+            {
+                imagePath.AddRange(Directory.GetFiles(directoryPath, "*png", SearchOption.AllDirectories).ToList());
+                imagePath.AddRange(Directory.GetFiles(directoryPath, "*jpg", SearchOption.AllDirectories).ToList());
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Don't have permission to open Directory. Try launch with admin rights");
+                closeTheForm = true;
+                
+            }
+            if(imagePath.Count == 0)
+            {
+                MessageBox.Show("This Directory have no images");
+                closeTheForm = true;
+            }
+           
         }
         private void AddPanel(int i)
         {

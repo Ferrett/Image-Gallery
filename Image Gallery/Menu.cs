@@ -24,11 +24,11 @@ namespace Image_Gallery
         private void OpenDirectoryButton_Click(object sender, EventArgs e)
         {
             using(FolderBrowserDialog dialog = new FolderBrowserDialog())
-            {
-                if(dialog.ShowDialog() == DialogResult.OK)
+            { 
+                if (dialog.ShowDialog() == DialogResult.OK)
                 {
                     this.textBox1.Text = dialog.SelectedPath;
-                    this.openGalleryButton.Visible = true;
+                    this.openGalleryButton.Visible = true;  
                 }
             }
         }
@@ -36,8 +36,17 @@ namespace Image_Gallery
         private void OpenGalleryButton_Click(object sender, EventArgs e)
         {
             this.Visible = false;
-            Form1 form = new Form1();
-            form.ShowDialog();
+            Form1 form = new Form1(textBox1.Text);
+            try
+            {
+                form.ShowDialog();
+            }
+            catch (Exception)
+            {
+
+               
+            }
+            
             this.Visible = true;
         }
 

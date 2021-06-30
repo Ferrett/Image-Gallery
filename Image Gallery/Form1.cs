@@ -27,6 +27,8 @@ namespace Image_Gallery
 
             rightButton.Click += RightButton_Click;
             leftButton.Click += LeftButton_Click;
+
+
             GetImagesFromFile();
             CreatePreviewImg();
             SetMainImage();

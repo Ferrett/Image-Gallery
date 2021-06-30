@@ -34,10 +34,15 @@ namespace Image_Gallery
             this.imgPanel = new System.Windows.Forms.Panel();
             this.progressPanel = new System.Windows.Forms.Panel();
             this.progressPanel2 = new System.Windows.Forms.Panel();
+            this.outlinePanel = new System.Windows.Forms.Panel();
             this.SuspendLayout();
             // 
             // rightButton
             // 
+
+           
+
+
             this.rightButton.BackColor = System.Drawing.Color.Black; 
             this.rightButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 30F);
             this.rightButton.ForeColor = System.Drawing.Color.White;
@@ -68,7 +73,12 @@ namespace Image_Gallery
             this.imgPanel.Size = new System.Drawing.Size(633, 339);
             this.imgPanel.TabIndex = 2;
             this.imgPanel.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-           
+
+
+            this.outlinePanel.BackColor = System.Drawing.Color.Red;
+            this.outlinePanel.Name = "outlinePanel";
+            this.outlinePanel.TabIndex = 2;
+
             // 
             // panel2
             // 
@@ -97,6 +107,7 @@ namespace Image_Gallery
             this.Controls.Add(this.imgPanel);
             this.Controls.Add(this.leftButton);
             this.Controls.Add(this.rightButton);
+            
             this.Name = "Form1";
             this.Text = "Gallery";
             this.ResumeLayout(false);
@@ -109,6 +120,7 @@ namespace Image_Gallery
         private System.Windows.Forms.Button leftButton;
         private System.Windows.Forms.Panel imgPanel;
         private System.Windows.Forms.Panel progressPanel;
+        private System.Windows.Forms.Panel outlinePanel;
         private System.Windows.Forms.Panel progressPanel2;
     }
 }

@@ -69,10 +69,10 @@ namespace Image_Gallery
             {
                 if (a < imagePath.Count)
                 {
-                    if (a <0)
+                    if (a < 0)
                         item.BackgroundImage = images[imagePath.Count + a];
                     else
-                    item.BackgroundImage = images[a];
+                        item.BackgroundImage = images[a];
                 }
                 else
                     item.BackgroundImage = images[a - imagePath.Count];
@@ -94,7 +94,8 @@ namespace Image_Gallery
             string rootdir = @"C:\Users\User\source\repos\Image Gallery\Image Gallery\bin\Debug\Images";
 
 
-            imagePath = Directory.GetFiles(rootdir, "*", SearchOption.AllDirectories).ToList();
+            imagePath.AddRange(Directory.GetFiles(rootdir, "*png", SearchOption.AllDirectories).ToList());
+            imagePath.AddRange(Directory.GetFiles(rootdir, "*jpg", SearchOption.AllDirectories).ToList());
         }
         private void AddPanel(int i)
         {
@@ -119,8 +120,8 @@ namespace Image_Gallery
                 for (int i = 0; i < previewImagesOnScreen; i++)
                 {
                     AddPanel(i);
-                    mainImageId = 4;
                 }
+                mainImageId = 4;
             }
             else
             {
@@ -128,9 +129,19 @@ namespace Image_Gallery
                 {
                     AddPanel(i);
                     previewImg[previewImg.Count - 1].Location = new Point(24 + i * 97 + ((previewImagesOnScreen - imagePath.Count) * 40), 400);
-                    mainImageId = (int)(imagePath.Count / 2);
+
                 }
+                mainImageId = (int)(imagePath.Count / 2);
             }
+            SelectedPanelOutline();
+        }
+
+        private void SelectedPanelOutline()
+        {
+            outlinePanel.Location = new Point(previewImg[mainImageId].Location.X-5, previewImg[mainImageId].Location.Y-5) ;
+            outlinePanel.Size = new Size(previewImg[mainImageId].Width + 10, previewImg[mainImageId].Height + 10);
+
+            this.Controls.Add(this.outlinePanel);
         }
     }
 }

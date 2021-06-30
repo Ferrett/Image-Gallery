@@ -15,7 +15,9 @@ namespace Image_Gallery
     {
         private List<Panel> previewImg = new List<Panel>();
         private List<string> imagePath = new List<string>();
-        private int currentImageID = 0;
+        private int previewImageID = 0;
+        private int mainImageId = 0;
+        private List<Image> images = new List<Image>();
         private const int previewImagesOnScreen = 8;
         public Form1()
         {
@@ -25,40 +27,65 @@ namespace Image_Gallery
             leftButton.Click += LeftButton_Click;
             GetImagesFromFile();
             CreatePreviewImg();
-            SetImage();
+            SetMainImage();
+            LoadImages();
+        }
+
+        private void LoadImages()
+        {
+            for (int i = 0; i < imagePath.Count; i++)
+            {
+                images.Add(Image.FromFile(imagePath[i]));
+            }
         }
 
         private void LeftButton_Click(object sender, EventArgs e)
         {
-            currentImageID--;
-            int a = currentImageID % imagePath.Count;
+            previewImageID--;
+
+            int a = previewImageID % imagePath.Count;
             foreach (var item in previewImg)
             {
-                if (a >=0)
-                    item.BackgroundImage = Image.FromFile(imagePath[a]);
+                if (a >= 0)
+                {
+                    if (a == imagePath.Count)
+                        a = 0;
+                    item.BackgroundImage = images[a];
+                }
                 else
-                    item.BackgroundImage = Image.FromFile(imagePath[imagePath.Count+a]);
+                    item.BackgroundImage = images[imagePath.Count + a];
+
                 a++;
             }
+            SetMainImage();
         }
 
         private void RightButton_Click(object sender, EventArgs e)
         {
-            currentImageID++;
-            int a = currentImageID % imagePath.Count;
+            previewImageID++;
+
+            int a = previewImageID % imagePath.Count;
             foreach (var item in previewImg)
             {
-               if(a<imagePath.Count)
-                    item.BackgroundImage = Image.FromFile(imagePath[a]);
-               else
-                    item.BackgroundImage = Image.FromFile(imagePath[a-imagePath.Count]);
-                a++;   
+                if (a < imagePath.Count)
+                {
+                    if (a <0)
+                        item.BackgroundImage = images[imagePath.Count + a];
+                    else
+                    item.BackgroundImage = images[a];
+                }
+                else
+                    item.BackgroundImage = images[a - imagePath.Count];
+
+                a++;
             }
+            SetMainImage();
         }
 
-        private void SetImage()
+        private void SetMainImage()
         {
-            imgPanel.BackgroundImage = Image.FromFile(imagePath[currentImageID]);
+
+            imgPanel.BackgroundImage = previewImg[mainImageId].BackgroundImage;
 
         }
 
@@ -92,6 +119,7 @@ namespace Image_Gallery
                 for (int i = 0; i < previewImagesOnScreen; i++)
                 {
                     AddPanel(i);
+                    mainImageId = 4;
                 }
             }
             else
@@ -99,6 +127,8 @@ namespace Image_Gallery
                 for (int i = 0; i < imagePath.Count; i++)
                 {
                     AddPanel(i);
+                    previewImg[previewImg.Count - 1].Location = new Point(24 + i * 97 + ((previewImagesOnScreen - imagePath.Count) * 40), 400);
+                    mainImageId = (int)(imagePath.Count / 2);
                 }
             }
         }

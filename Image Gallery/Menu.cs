@@ -15,6 +15,35 @@ namespace Image_Gallery
         public Menu()
         {
             InitializeComponent();
+
+            exitButton.Click += ExitButton_Click;
+            openGalleryButton.Click += OpenGalleryButton_Click;
+            openDirectoryButton.Click += OpenDirectoryButton_Click;
+        }
+
+        private void OpenDirectoryButton_Click(object sender, EventArgs e)
+        {
+            using(FolderBrowserDialog dialog = new FolderBrowserDialog())
+            {
+                if(dialog.ShowDialog() == DialogResult.OK)
+                {
+                    this.textBox1.Text = dialog.SelectedPath;
+                    this.openGalleryButton.Visible = true;
+                }
+            }
+        }
+
+        private void OpenGalleryButton_Click(object sender, EventArgs e)
+        {
+            this.Visible = false;
+            Form1 form = new Form1();
+            form.ShowDialog();
+            this.Visible = true;
+        }
+
+        private void ExitButton_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
     }
 }

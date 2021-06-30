@@ -19,6 +19,8 @@ namespace Image_Gallery
         private int mainImageId = 0;
         private List<Image> images = new List<Image>();
         private const int previewImagesOnScreen = 8;
+        Timer timer = new Timer();
+        int showImageProgress=0;
         public Form1()
         {
             InitializeComponent();
@@ -29,6 +31,21 @@ namespace Image_Gallery
             CreatePreviewImg();
             SetMainImage();
             LoadImages();
+
+            timer.Interval = 20;
+            timer.Tick += Timer_Tick;
+            timer.Start();
+        }
+
+        private void Timer_Tick(object sender, EventArgs e)
+        {
+            progressPanel2.Size = new Size(showImageProgress, progressPanel2.Height);
+            showImageProgress++;
+
+            if (progressPanel2.Width == progressPanel.Width - 5) 
+            {
+                RightButton_Click(null, null);
+            }
         }
 
         private void LoadImages()
@@ -41,6 +58,7 @@ namespace Image_Gallery
 
         private void LeftButton_Click(object sender, EventArgs e)
         {
+            showImageProgress = 0;
             previewImageID--;
 
             int a = previewImageID % imagePath.Count;
@@ -62,6 +80,7 @@ namespace Image_Gallery
 
         private void RightButton_Click(object sender, EventArgs e)
         {
+            showImageProgress = 0;
             previewImageID++;
 
             int a = previewImageID % imagePath.Count;

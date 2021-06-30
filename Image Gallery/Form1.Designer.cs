@@ -89,10 +89,11 @@ namespace Image_Gallery
             this.progressPanel.TabIndex = 3;
             this.progressPanel.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
 
-            this.progressPanel2.BackColor = System.Drawing.Color.BlueViolet;
+            this.progressPanel2.BackColor = System.Drawing.Color.LightGreen;
             this.progressPanel2.Location = new System.Drawing.Point(86, 373);
             this.progressPanel2.Name = "panel2";
-            this.progressPanel2.Size = new System.Drawing.Size(333, 6);
+            //this.progressPanel2.Size = new System.Drawing.Size(333, 6);
+            this.progressPanel2.Size = new System.Drawing.Size(0, 6);
             this.progressPanel2.TabIndex = 3;
             
             // 

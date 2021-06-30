@@ -33,11 +33,12 @@ namespace Image_Gallery
             this.leftButton = new System.Windows.Forms.Button();
             this.imgPanel = new System.Windows.Forms.Panel();
             this.progressPanel = new System.Windows.Forms.Panel();
+            this.progressPanel2 = new System.Windows.Forms.Panel();
             this.SuspendLayout();
             // 
             // rightButton
             // 
-            this.rightButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.rightButton.BackColor = System.Drawing.Color.Black; 
             this.rightButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 30F);
             this.rightButton.ForeColor = System.Drawing.Color.White;
             this.rightButton.Location = new System.Drawing.Point(736, 25);
@@ -49,7 +50,7 @@ namespace Image_Gallery
             // 
             // leftButton
             // 
-            this.leftButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.leftButton.BackColor = System.Drawing.Color.Black;
             this.leftButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 30F);
             this.leftButton.ForeColor = System.Drawing.Color.White;
             this.leftButton.Location = new System.Drawing.Point(12, 25);
@@ -61,19 +62,28 @@ namespace Image_Gallery
             // 
             // panel1
             // 
-            this.imgPanel.BackColor = System.Drawing.SystemColors.ControlLightLight;
+            this.imgPanel.BackColor = System.Drawing.Color.Black;
             this.imgPanel.Location = new System.Drawing.Point(84, 25);
             this.imgPanel.Name = "panel1";
             this.imgPanel.Size = new System.Drawing.Size(633, 339);
             this.imgPanel.TabIndex = 2;
+            this.imgPanel.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             // 
             // panel2
             // 
-            this.progressPanel.BackColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.progressPanel.BackColor = System.Drawing.Color.Black;
             this.progressPanel.Location = new System.Drawing.Point(84, 371);
             this.progressPanel.Name = "panel2";
             this.progressPanel.Size = new System.Drawing.Size(633, 10);
             this.progressPanel.TabIndex = 3;
+            this.progressPanel.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+
+            this.progressPanel2.BackColor = System.Drawing.Color.BlueViolet;
+            this.progressPanel2.Location = new System.Drawing.Point(86, 373);
+            this.progressPanel2.Name = "panel2";
+            this.progressPanel2.Size = new System.Drawing.Size(333, 6);
+            this.progressPanel2.TabIndex = 3;
+            
             // 
             // Form1
             // 
@@ -81,6 +91,7 @@ namespace Image_Gallery
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.ClientSize = new System.Drawing.Size(800, 466);
+            this.Controls.Add(this.progressPanel2);
             this.Controls.Add(this.progressPanel);
             this.Controls.Add(this.imgPanel);
             this.Controls.Add(this.leftButton);
@@ -97,6 +108,7 @@ namespace Image_Gallery
         private System.Windows.Forms.Button leftButton;
         private System.Windows.Forms.Panel imgPanel;
         private System.Windows.Forms.Panel progressPanel;
+        private System.Windows.Forms.Panel progressPanel2;
     }
 }
 

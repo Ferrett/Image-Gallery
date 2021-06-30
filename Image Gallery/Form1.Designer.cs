@@ -68,12 +68,13 @@ namespace Image_Gallery
             this.imgPanel.Size = new System.Drawing.Size(633, 339);
             this.imgPanel.TabIndex = 2;
             this.imgPanel.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+           
             // 
             // panel2
             // 
             this.progressPanel.BackColor = System.Drawing.Color.Black;
             this.progressPanel.Location = new System.Drawing.Point(84, 371);
-            this.progressPanel.Name = "panel2";
+            this.progressPanel.Name = "panel";
             this.progressPanel.Size = new System.Drawing.Size(633, 10);
             this.progressPanel.TabIndex = 3;
             this.progressPanel.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;

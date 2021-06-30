@@ -29,48 +29,62 @@ namespace Image_Gallery
         /// </summary>
         private void InitializeComponent()
         {
-            this.button1 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
-            this.panel1 = new System.Windows.Forms.Panel();
+            this.rightButton = new System.Windows.Forms.Button();
+            this.leftButton = new System.Windows.Forms.Button();
+            this.imgPanel = new System.Windows.Forms.Panel();
+            this.progressPanel = new System.Windows.Forms.Panel();
             this.SuspendLayout();
             // 
-            // button1
+            // rightButton
             // 
-            this.button1.BackColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.button1.Location = new System.Drawing.Point(736, 25);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(52, 339);
-            this.button1.TabIndex = 0;
-            this.button1.Text = "button1";
-            this.button1.UseVisualStyleBackColor = false;
+            this.rightButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.rightButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 30F);
+            this.rightButton.ForeColor = System.Drawing.Color.White;
+            this.rightButton.Location = new System.Drawing.Point(736, 25);
+            this.rightButton.Name = "rightButton";
+            this.rightButton.Size = new System.Drawing.Size(52, 339);
+            this.rightButton.TabIndex = 0;
+            this.rightButton.Text = "🡺";
+            this.rightButton.UseVisualStyleBackColor = false;
             // 
-            // button2
+            // leftButton
             // 
-            this.button2.BackColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.button2.Location = new System.Drawing.Point(12, 25);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(52, 339);
-            this.button2.TabIndex = 1;
-            this.button2.Text = "button2";
-            this.button2.UseVisualStyleBackColor = false;
+            this.leftButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.leftButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 30F);
+            this.leftButton.ForeColor = System.Drawing.Color.White;
+            this.leftButton.Location = new System.Drawing.Point(12, 25);
+            this.leftButton.Name = "leftButton";
+            this.leftButton.Size = new System.Drawing.Size(52, 339);
+            this.leftButton.TabIndex = 1;
+            this.leftButton.Text = "🡸";
+            this.leftButton.UseVisualStyleBackColor = false;
             // 
             // panel1
             // 
-            this.panel1.BackColor = System.Drawing.SystemColors.ControlLightLight;
-            this.panel1.Location = new System.Drawing.Point(84, 25);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(633, 339);
-            this.panel1.TabIndex = 2;
+            this.imgPanel.BackColor = System.Drawing.SystemColors.ControlLightLight;
+            this.imgPanel.Location = new System.Drawing.Point(84, 25);
+            this.imgPanel.Name = "panel1";
+            this.imgPanel.Size = new System.Drawing.Size(633, 339);
+            this.imgPanel.TabIndex = 2;
+            // 
+            // panel2
+            // 
+            this.progressPanel.BackColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.progressPanel.Location = new System.Drawing.Point(84, 371);
+            this.progressPanel.Name = "panel2";
+            this.progressPanel.Size = new System.Drawing.Size(633, 10);
+            this.progressPanel.TabIndex = 3;
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Controls.Add(this.panel1);
-            this.Controls.Add(this.button2);
-            this.Controls.Add(this.button1);
+            this.ClientSize = new System.Drawing.Size(800, 466);
+            this.Controls.Add(this.progressPanel);
+            this.Controls.Add(this.imgPanel);
+            this.Controls.Add(this.leftButton);
+            this.Controls.Add(this.rightButton);
             this.Name = "Form1";
             this.Text = "Gallery";
             this.ResumeLayout(false);
@@ -79,9 +93,10 @@ namespace Image_Gallery
 
         #endregion
 
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.Button rightButton;
+        private System.Windows.Forms.Button leftButton;
+        private System.Windows.Forms.Panel imgPanel;
+        private System.Windows.Forms.Panel progressPanel;
     }
 }
 
